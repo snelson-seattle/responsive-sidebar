@@ -1,8 +1,49 @@
-import { FaSketch, FaHome, FaSearch, FaStream, FaBook, FaUsers, FaToolbox, FaShoppingCart, FaQuestionCircle } from "react-icons/fa";
+import { useRef } from "react";
+
+import {
+  FaSketch,
+  FaHome,
+  FaSearch,
+  FaStream,
+  FaBook,
+  FaUsers,
+  FaToolbox,
+  FaShoppingCart,
+  FaQuestionCircle,
+} from "react-icons/fa";
 
 const Sidebar = () => {
+  const sidebarRef = useRef();
+
+  const toggleDarkTheme = () => {
+    sidebarRef.current.classList.remove("bg-blue-900");
+    sidebarRef.current.classList.remove("bg-gray-200");
+    sidebarRef.current.classList.remove("text-gray-800");
+    sidebarRef.current.classList.add("bg-gray-900");
+    sidebarRef.current.classList.add("text-gray-300");
+  };
+
+  const toggleNightTheme = () => {
+    sidebarRef.current.classList.remove("bg-gray-900");
+    sidebarRef.current.classList.remove("bg-gray-200");
+    sidebarRef.current.classList.remove("text-gray-800");
+    sidebarRef.current.classList.add("bg-blue-900");
+    sidebarRef.current.classList.add("text-gray-300");
+  };
+
+  const toggleLightTheme = () => {
+    sidebarRef.current.classList.remove("bg-gray-900");
+    sidebarRef.current.classList.remove("bg-blue-900");
+    sidebarRef.current.classList.remove("text-gray-300");
+    sidebarRef.current.classList.add("bg-gray-200");
+    sidebarRef.current.classList.add("text-gray-800");
+  };
+
   return (
-    <div className="w-[50px] md:w-[180px] h-screen bg-gray-900 text-gray-300 flex flex-col items-center">
+    <div
+      ref={sidebarRef}
+      className="w-[50px] md:w-[180px] h-screen bg-gray-900 text-gray-300 flex flex-col items-center"
+    >
       <div className="w-[80%] py-2.5 px-0 mb-2.5 flex items-center border-b border-solid border-gray-500">
         <FaSketch size="2.5rem" className="mr-2.5 cursor-pointer pl-2.5" />
         <p className="hidden md:block md:text-2xl md:font-bold">App</p>
@@ -44,9 +85,15 @@ const Sidebar = () => {
         </ul>
       </div>
       <div className="w-[80%] py-2.5 px-0 mb-2.5 flex flex-col md:flex-row justify-center items-center">
-        <div className="w-8 h-8 border border-solid border-gray-500 cursor-pointer mb-3 md:mb-0 md:mr-3 rounded-[5px] bg-gray-900"></div>
-        <div className="w-8 h-8 border border-solid border-gray-500 cursor-pointer mb-3 md:mb-0 md:mr-3 rounded-[5px] bg-blue-900"></div>
-        <div className="w-8 h-8 border border-solid border-gray-500 cursor-pointer mb-3 md:mb-0 md:mr-3 rounded-[5px] bg-white"></div>
+        <div
+          onClick={toggleDarkTheme}
+          className="w-8 h-8 border border-solid border-gray-500 cursor-pointer mb-3 md:mb-0 md:mr-3 rounded-[5px] bg-gray-900"
+        ></div>
+        <div
+          onClick={toggleNightTheme}
+          className="w-8 h-8 border border-solid border-gray-500 cursor-pointer mb-3 md:mb-0 md:mr-3 rounded-[5px] bg-blue-900"
+        ></div>
+        <div onClick={toggleLightTheme} className="w-8 h-8 border border-solid border-gray-500 cursor-pointer mb-3 md:mb-0 md:mr-3 rounded-[5px] bg-white"></div>
       </div>
     </div>
   );
