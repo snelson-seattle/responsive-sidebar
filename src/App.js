@@ -1,10 +1,10 @@
-
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
-    <div>
-      App goes here.
-    </div>
+    <>
+      <Sidebar />
+    </>
   );
 }
 
